@@ -1,0 +1,289 @@
+/* Define Variables */
+:root {
+    /* Colors */
+    --bg-color: black;
+    --text-color: white;
+    --highlight-color: #FFD55D;
+    --footer-text-color: #aaa;
+
+    /* Icon Filters */
+    --mail-filter: invert(60%) sepia(35%) saturate(797%) hue-rotate(338deg) brightness(103%) contrast(101%);
+    --youtube-filter: invert(10%) sepia(90%) saturate(4252%) hue-rotate(355deg) brightness(88%) contrast(105%);
+    --instagram-filter: invert(76%) sepia(67%) saturate(335%) hue-rotate(64deg) brightness(92%) contrast(91%);
+    --x-filter: invert(80%) sepia(5%) saturate(6369%) hue-rotate(200deg) brightness(90%) contrast(87%);
+
+    /* Font Sizes */
+    --font-size-body: 1rem;
+    --font-size-animated: 2rem;
+    --font-size-footer: 0.7rem;
+
+    /* Gaps and Margins */
+    --gap-small: 1.5rem;
+    --gap-large: 3rem;
+    --gap-mobile: 1rem;
+    --padding-mobile: 0.5rem;
+    --margin-social: 8rem;
+}
+
+/* Import Variable Font */
+@font-face {
+    font-family: 'LDIoaom_vb';
+    src: url('assets/LDIoaom_vb.woff2') format('woff2');
+    font-weight: 50 900;
+    font-style: normal;
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'LDIoaom_vb', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0.5rem 4rem;
+    text-align: center;
+}
+
+
+/* Main Content Wrapper */
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+    color: var(--highlight-color);
+}
+
+/* Main Container Styling */
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap-small);
+    justify-content: center;
+    width: 90%;
+    max-width: 700px;
+}
+
+.left-child, .right-child {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-child {
+    max-width: 120px; 
+    max-height: 220px; 
+    width: 100%; 
+    height: auto; 
+    justify-content: flex-start;
+    padding-left: 2rem;
+}
+
+.left-child {
+    max-width: 120px; 
+    max-height: 120px; 
+    width: 100%; 
+    height: auto; 
+    justify-content: flex-end;
+}
+
+/* Right-Child Styling */
+.right-child svg {
+    width: 300px; /* Updated size for better visibility */
+    height: 300px;
+    max-height: 200px;
+}
+
+/* Animated Text */
+#animated-text {
+    font-variation-settings: "wght" 50;
+    animation: weightAnimation 2s infinite ease-in-out;
+    font-size: var(--font-size-animated);
+    text-align: left;
+}
+
+@keyframes weightAnimation {
+    0%, 100% {
+        font-variation-settings: "wght" 50;
+    }
+    50% {
+        font-variation-settings: "wght" 800;
+    }
+}
+
+/* Social Media Container */
+.social-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-large);
+    margin-top: var(--margin-social);
+}
+
+.social-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.2rem; /* Base height for all icons */
+    width: auto; /* Width adjusts automatically */
+    overflow: hidden;
+    transition: transform 0.5s ease;
+    filter: none; /* Default filter */
+}
+
+/* Individual Icon Styling */
+.social-icon.mail img {
+    height: 90%; /* Full height of container */
+    filter: var(--mail-filter);
+}
+
+.social-icon.youtube img {
+    height: 90%; /* Slightly smaller */
+    filter: var(--youtube-filter);
+}
+
+.social-icon.instagram img {
+    height: 100%; /* Smaller height */
+    filter: var(--instagram-filter);
+}
+
+.social-icon.x img {
+    height: 80%; /* Smaller height */
+    filter: var(--x-filter);
+}
+
+/* Hover Effect */
+.social-icon:hover {
+    transform: scale(1.4); /* Smooth zoom on hover */
+}
+
+/* Footer Styling */
+footer {
+    padding: 1rem;
+    font-size: var(--font-size-footer);
+    font-weight: 100;
+    text-align: center;
+    color: var(--footer-text-color);
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Main Fill */
+.main-fill {
+    fill: #ffd55d;
+    filter: none; /* No glow applied to the fill */
+}
+
+/* SVG Stroke Animation */
+.rainbow-stroke {
+    animation: strokeAnimation 3s linear infinite, gradientMove 6s linear infinite;
+    filter: url(#glow); /* Glow aligns with rainbow colors */
+}
+
+/* Keyframes for Stroke Dash Offset Animation */
+@keyframes strokeAnimation {
+    0% {
+        stroke-dashoffset: 820;
+    }
+    100% {
+        stroke-dashoffset: -820;
+    }
+}
+
+/* Keyframes for Moving Gradient */
+@keyframes gradientMove {
+    0% {
+        stop-color: #FF0000;
+    }
+    16.6% {
+        stop-color: #FF7F00;
+    }
+    33.3% {
+        stop-color: #FFFF00;
+    }
+    50% {
+        stop-color: #00FF00;
+    }
+    66.6% {
+        stop-color: #0000FF;
+    }
+    83.3% {
+        stop-color: #4B0082;
+    }
+    100% {
+        stop-color: #8F00FF;
+    }
+}
+
+/* tsParticles Background Styling */
+#tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensures it's behind all other content */
+    background-color: var(--bg-color);
+}
+
+/* Glow Enhancements */
+#logo {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4));
+}
+
+#animated-text {
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: var(--gap-mobile);
+    }
+
+    .left-child {
+        max-width: 100px; /* Adjust container size for smaller screens */
+        max-height: 100px;
+        padding: var(--padding-mobile);
+    }
+
+    .right-child {
+        max-width: 120px; /* Adjust container size for smaller screens */
+        max-height: 120px;
+        padding: var(--padding-mobile);
+    }
+    
+    .right-child svg {
+        width: 100%; /* Ensure the SVG scales with its container */
+        height: auto;
+    }
+    
+    .left-child { 
+        justify-content: center;
+    }
+
+    #animated-text {
+        font-size: 1.5rem; /* Reduce font size for smaller screens */
+    }
+}
